@@ -1,8 +1,25 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
 }
 
 a {
   color: #00B7FF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 100;
+}
+
+.jumbo {
+    position: relative;
+    padding: 40px 0;
+    text-align: center;
+    text-shadow: 0 2px 3px rgba(0,0,0,.8), 0 0 30px rgba(0,0,0,.35);
+    color: #ffffff;
+    background: url('/img/4.jpeg') no-repeat center center;
+    height: 400px;
+    background-size: cover;
 }
