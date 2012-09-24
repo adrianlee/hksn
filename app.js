@@ -53,7 +53,19 @@ hbs.registerHelper('block', function(name) {
 // Router
 ////////////////////////////////////////////////
 app.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'HKSN' });
+});
+
+app.get('/page', function(req, res) {
+  res.render('page', { title: 'HKSN' });
+});
+
+app.get('/events', function(req, res) {
+  res.render('events', { title: 'HKSN' });
+});
+
+app.get('/academics', function(req, res) {
+  res.render('academics', { title: 'HKSN' });
 });
 
 ////////////////////////////////////////////////

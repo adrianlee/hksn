@@ -1,12 +1,45 @@
-<div class="container">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=10106218834";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- <div class="container"> -->
 <!-- Jumbo! -->
-<div class="home-jumbo">
+<div id="home">
   <h1>Hong Kong Student Network</h1>
   <p>I ♥ HONG KONG</p>
 </div>
 
 <!-- Events / Twitter -->
-<div class="home-events"></div>
+<div class="home-events">
+  <div class="tint row">
+    <div class="itinerary offset2 span6">
+      <h1>Upcoming Events</h1>
+      <h4>Short explaination of our events</h4>
+      <ul>
+        <li>
+          <div class="itinerary-date">
+            <span class="text-error">OCT</span>
+            <span>17</span>
+          </div>
+          <div class="itinerary-info">
+            <strong>Welcome Party: A Night in LKF!</strong><br>
+            Come join us for a night of GROUP GAMES, PRIZES, HILARIOUS VIDS, DELISH FOOD, and MORE.<br>
+          </div>
+        </li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="itinerary poster offset1 span3 visible-desktop">
+      <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn1/560553_483857248300291_425466358_n.jpg" />
+    </div>
+  </div>
+</div>
 
 <!-- Blog News -->
 <div class="home-news">
@@ -27,6 +60,33 @@
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script>
   function initialize() {
+
+    var styles = [
+      {
+        featureType: "all",
+        stylers: [
+          { saturation: -50 }
+        ]
+      },
+      {
+        featureType: "road.arterial",
+        elementType: "geometry",
+        stylers: [
+          { hue: "#00ffee" },
+          { saturation: 50 }
+        ]
+      },
+      {
+        featureType: "poi.business",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+
+    var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+
     var mapOptions = {
       zoom: 15,
       center: new google.maps.LatLng(45.502075, -73.566299),
@@ -37,19 +97,19 @@
       mapTypeControl: false,
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.SMALL,
-        position: google.maps.ControlPosition.TOP_RIGHT
+        position: google.maps.ControlPosition.TOP_LEFT
       }
     };
 
-    var map = new google.maps.Map(document.getElementById('map_canvas'),
-        mapOptions);
+    var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
   }
 
   function loadScript() {
     var script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false&' +
-        'callback=initialize';
+    script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false&' + 'callback=initialize';
     document.body.appendChild(script);
   }
 
@@ -57,4 +117,10 @@
 </script>
 
 <div id="map_canvas"></div>
+
+<div class="corkboard"></div>
+
+<div class="contact-canvas">
+  <div class="well fb-comments" data-href="http://hksn.ca" data-num-posts="5" data-width="600"></div>
 </div>
+<!-- </div> -->
