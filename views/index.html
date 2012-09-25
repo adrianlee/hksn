@@ -9,40 +9,17 @@
 
 <!-- <div class="container"> -->
 <!-- Jumbo! -->
-<div id="home">
-  <h1>Hong Kong Student Network</h1>
-  <p>I ♥ HONG KONG</p>
-</div>
-
-<!-- Events / Twitter -->
-<div class="home-events">
-  <div class="tint row">
-    <div class="itinerary offset2 span6">
-      <h1>Upcoming Events</h1>
-      <h4>Short explaination of our events</h4>
-      <ul>
-        <li>
-          <div class="itinerary-date">
-            <span class="text-error">OCT</span>
-            <span>17</span>
-          </div>
-          <div class="itinerary-info">
-            <strong>Welcome Party: A Night in LKF!</strong><br>
-            Come join us for a night of GROUP GAMES, PRIZES, HILARIOUS VIDS, DELISH FOOD, and MORE.<br>
-          </div>
-        </li>
-        <li></li>
-        <li></li>
-      </ul>
-    </div>
-    <div class="itinerary poster offset1 span3 visible-desktop">
-      <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn1/560553_483857248300291_425466358_n.jpg" />
+<div id="news">
+  <div class="tint">
+    <div class="container">
+      <h1>Hong Kong Student Network</h1>
+      <p>ipsum dolor sit amet chocolate cake pie I love toffee. Bonbon cheesecake chocolate cake biscuit jujubes. Ice cream pastry jujubes dragée chocolate dragée sweet roll tart. Biscuit cake pie. Jelly-o chocolate croissant tootsie roll I love apple pie caramels ice cream I love. Danish cheesecake I love chocolate bar pie applicake cake chocolate cupcake.</p>
     </div>
   </div>
 </div>
 
-<!-- Blog News -->
-<div class="home-news">
+<!-- Photo -->
+<div id="photos">
   <div id="myCarousel" class="carousel slide">
     <!-- Carousel items -->
     <div class="carousel-inner">
@@ -53,6 +30,50 @@
     <!-- Carousel nav -->
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
     <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  </div>
+</div>
+
+<!-- Events / Twitter -->
+<div id="events">
+  <div class="tint">
+    <div class="container">
+      <div class="row">
+
+        <!-- events -->
+        <div class="itinerary span6 offset1">
+          <h1>Upcoming Events</h1>
+          <h4>Come hang out, meet new people and have a great time!</h4>
+          <ul>
+            <li>
+              <div class="itinerary-date">
+                <span class="text-error">OCT</span>
+                <span>17</span>
+              </div>
+              <div class="itinerary-info">
+                <strong>Welcome Party: A Night in LKF!</strong><br>
+                Come join us for a night of GROUP GAMES, PRIZES, HILARIOUS VIDS, DELISH FOOD, and MORE.<br>
+              </div>
+            </li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
+        <!-- left poster -->
+        <!-- <div class="poster span3 visible-tablet visible-desktop">
+          <a href="#" class="thumbnail">
+            <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn1/560553_483857248300291_425466358_n.jpg" />
+          </a>
+        </div> -->
+
+        <!-- right poster -->
+        <div class="poster span3 offset1 visible-tablet visible-desktop">
+          <a href="#" class="thumbnail">
+            <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn1/560553_483857248300291_425466358_n.jpg" />
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -101,7 +122,7 @@
       }
     };
 
-    var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+    var map = new google.maps.Map(document.getElementById('sponsors'), mapOptions);
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
   }
@@ -116,11 +137,27 @@
   window.onload = loadScript;
 </script>
 
-<div id="map_canvas"></div>
+<div id="sponsors"></div>
 
-<div class="corkboard"></div>
+<div id="team"></div>
 
-<div class="contact-canvas">
-  <div class="well fb-comments" data-href="http://hksn.ca" data-num-posts="5" data-width="600"></div>
+<div id="contact">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p>Um hello</p>
+    <div class="row">
+      <div class="span2 well">
+        Our Email
+        <a href="mailto:hksnmcgill@gmail.com">hksnmcgill@gmail.com</a>
+      </div>
+      <div class="span2 well">
+        Youtube<br/>
+        Facebook<br/>
+        Twitter<br/>
+      </div>
+      <div class="span6">
+        <div class="well fb-comments" data-href="http://hksn.ca" data-num-posts="5" data-width="600"></div>
+      </div>
+  </div>
 </div>
 <!-- </div> -->
