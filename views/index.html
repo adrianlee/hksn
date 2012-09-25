@@ -12,7 +12,8 @@
 <div id="news">
   <div class="tint">
     <div class="container">
-      <h1>Hong Kong Student Network</h1>
+      <img src="img/logo.png" width="30%" height="30%" />
+      <!-- <h1>Hong Kong Student Network</h1> -->
       <p>ipsum dolor sit amet chocolate cake pie I love toffee. Bonbon cheesecake chocolate cake biscuit jujubes. Ice cream pastry jujubes dragée chocolate dragée sweet roll tart. Biscuit cake pie. Jelly-o chocolate croissant tootsie roll I love apple pie caramels ice cream I love. Danish cheesecake I love chocolate bar pie applicake cake chocolate cupcake.</p>
     </div>
   </div>
@@ -23,9 +24,23 @@
   <div id="myCarousel" class="carousel slide">
     <!-- Carousel items -->
     <div class="carousel-inner">
-      <div class="active item" style="height: 600px; background: url('/img/4-3.jpeg') no-repeat center center; background-size: cover;"></div>
-      <div class="item" style="height: 600px; background: url('/img/4-1.jpeg') no-repeat center center; background-size: cover;"></div>
-      <div class="item" style="height: 600px; background: url('/img/4-2.jpeg') no-repeat center center; background-size: cover;"></div>
+      <!-- <div class="active item" style="height: 650px; background: url('/img/4-3.jpeg') no-repeat center center; background-size: cover;"></div> -->
+      <!-- <div class="item" style="height: 650px; background: url('/img/4-1.jpeg') no-repeat center center; background-size: cover;"></div> -->
+      <div class="active item" style="height: 650px; background: url('/img/4-2.jpeg') no-repeat center center; background-size: cover;"></div>
+<!--       <div class="item" style="height: 650px; background: url('/img/4-2.jpeg') no-repeat center center; background-size: cover;">
+        <div class="carousel-caption">
+          <h4>First Thumbnail label</h4>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        </div>
+      </div> -->
+      <div class="item">
+        <iframe width="100%" height="650" src="http://www.youtube.com/embed/SMpioQtvIng" frameborder="0" allowfullscreen></iframe>
+        <div class="carousel-caption">
+          <h4>Welcome Party Video</h4>
+          <p>A huge THANK YOU to everyone who came to our Welcome Party last night! We had a wonderful time, and we hope you did too! We were so so happy to meet each of you! We hope to see your beautiful faces again at future events! Here is our Welcome Party video for those of you who couldn't make it to the party and for those of you who did make it and want to watch it again :)</p>
+        </div>
+      </div>
+
     </div>
     <!-- Carousel nav -->
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
@@ -45,17 +60,19 @@
           <h4>Come hang out, meet new people and have a great time!</h4>
           <ul>
             <li>
-              <div class="itinerary-date">
-                <span class="text-error">OCT</span>
-                <span>17</span>
-              </div>
-              <div class="itinerary-info">
-                <strong>Welcome Party: A Night in LKF!</strong><br>
-                Come join us for a night of GROUP GAMES, PRIZES, HILARIOUS VIDS, DELISH FOOD, and MORE.<br>
-              </div>
+              <a href="https://www.facebook.com/events/415936068470910/">
+                <div class="itinerary-date">
+                  <span class="month">SEPT</span>
+                  <span class="date">14</span>
+                </div>
+                <div class="itinerary-info">
+                  <strong>Welcome Party: A Night in LKF!</strong><br>
+                  Come join us for a night of GROUP GAMES, PRIZES, HILARIOUS VIDS, DELISH FOOD, and MORE.<br>
+                </div>
+              </a>
             </li>
-            <li></li>
-            <li></li>
+            <!-- <li></li> -->
+            <!-- <li></li> -->
           </ul>
         </div>
 
@@ -68,7 +85,7 @@
 
         <!-- right poster -->
         <div class="poster span3 offset1 visible-tablet visible-desktop">
-          <a href="#" class="thumbnail">
+          <a href="https://www.facebook.com/events/415936068470910/" class="thumbnail">
             <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn1/560553_483857248300291_425466358_n.jpg" />
           </a>
         </div>
@@ -86,14 +103,15 @@
       {
         featureType: "all",
         stylers: [
-          { saturation: -50 }
+          { hue: "#12342" },
+          { saturation: 100 }
         ]
       },
       {
         featureType: "road.arterial",
         elementType: "geometry",
         stylers: [
-          { hue: "#00ffee" },
+          // { hue: "#00ffee" },
           { saturation: 50 }
         ]
       },
