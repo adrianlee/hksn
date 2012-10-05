@@ -88,6 +88,12 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity .3s linear;
 }
 
+#event-phone {
+  height: 600px;
+  background: url('https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn1/560553_483857248300291_425466358_n.jpg') no-repeat center center;
+  background-size: cover;
+}
+
 .tint {
   height: 650px;
   background: rgba(20,20,20, 0.80);

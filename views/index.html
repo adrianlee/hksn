@@ -25,19 +25,20 @@ Header: News!
 <!--
 Carousel: Photo
 -->
-<div id="photos">
+<div id="photos" class="hidden-phone">
   <div id="myCarousel" class="carousel slide">
     <!-- Carousel items -->
     <div class="carousel-inner">
       <!-- <div class="active item" style="height: 650px; background: url('/img/4-3.jpeg') no-repeat center center; background-size: cover;"></div> -->
       <!-- <div class="item" style="height: 650px; background: url('/img/4-1.jpeg') no-repeat center center; background-size: cover;"></div> -->
-      <div class="active item" style="height: 650px; background: url('/img/4-2.jpeg') no-repeat center center; background-size: cover;"></div>
+      <div class="active item" style="height: 650px; background: url('/img/banner/jan13-skitrip-coverphoto.jpg') no-repeat center left; background-size: cover;"></div>
 <!--       <div class="item" style="height: 650px; background: url('/img/4-2.jpeg') no-repeat center center; background-size: cover;">
         <div class="carousel-caption">
           <h4>First Thumbnail label</h4>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
         </div>
       </div> -->
+      <!--
       <div class="item">
         <iframe width="100%" height="650" src="http://www.youtube.com/embed/SMpioQtvIng" frameborder="0" allowfullscreen></iframe>
         <div class="carousel-caption">
@@ -45,6 +46,7 @@ Carousel: Photo
           <p>A huge THANK YOU to everyone who came to our Welcome Party last night! We had a wonderful time, and we hope you did too! We were so so happy to meet each of you! We hope to see your beautiful faces again at future events! Here is our Welcome Party video for those of you who couldn't make it to the party and for those of you who did make it and want to watch it again :)</p>
         </div>
       </div>
+      -->
 
     </div>
     <!-- Carousel nav -->
@@ -66,6 +68,33 @@ Upcoming Events: Events & Poster
           <h1>Upcoming Events</h1>
           <h4>Come hang out, meet new people and have a great time!</h4>
           <ul>
+            <!-- u me and bbt -->
+            <li>
+              <a href="https://www.facebook.com/events/494609210564339/">
+                <div class="itinerary-date">
+                  <span class="month">OCT</span>
+                  <span class="date">13</span>
+                </div>
+                <div class="itinerary-info">
+                  <strong>Food Outing: U, ME & BBT + Exec Meet&Greet!</strong><br>
+                  Enjoy a delicious meal and bubble tea with a great group of people in a friendly atmosphere<br>
+                </div>
+              </a>
+            </li>
+            <!-- canto class -->
+            <li>
+              <a href="https://www.facebook.com/events/415936068470910/">
+                <div class="itinerary-date">
+                  <span class="month">OCT</span>
+                  <span class="date">04</span>
+                </div>
+                <div class="itinerary-info">
+                  <strong>CANTO with KIP SIR & MS LEUNG</strong><br>
+                  FREE, interactive and fun classes where you will learn useful Cantonese words and phrases<br>
+                </div>
+              </a>
+            </li>
+            <!-- welcome party -->
             <li>
               <a href="https://www.facebook.com/events/415936068470910/">
                 <div class="itinerary-date">
@@ -74,12 +103,10 @@ Upcoming Events: Events & Poster
                 </div>
                 <div class="itinerary-info">
                   <strong>Welcome Party: A Night in LKF!</strong><br>
-                  Come join us for a night of GROUP GAMES, PRIZES, HILARIOUS VIDS, DELISH FOOD, and MORE.<br>
+                  Come join us for a night of GROUP GAMES, PRIZES, HILARIOUS VIDS, DELISH FOOD, and MORE<br>
                 </div>
               </a>
             </li>
-            <!-- <li></li> -->
-            <!-- <li></li> -->
           </ul>
         </div>
 
@@ -100,6 +127,13 @@ Upcoming Events: Events & Poster
     </div>
   </div>
 </div>
+
+
+<!--
+POSTER for phone
+-->
+<div id="event-phone" class="visible-phone"></div>
+
 
 <!--
 Sponsors: Google Map
@@ -164,8 +198,7 @@ Sponsors: Google Map
   window.onload = loadScript;
 </script>
 
-<div id="sponsors"></div>
-
+<div id="sponsors" class="hidden-phone"></div>
 
 <!--
 Corkboard: Team
