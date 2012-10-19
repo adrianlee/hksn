@@ -68,6 +68,23 @@ app.get('/academics', function(req, res) {
   res.render('academics', { title: 'HKSN' });
 });
 
+app.get('/events', function(req, res) {
+
+  var Tumblr = require('tumblr').Tumblr;
+  var blog = new Tumblr('mcgillhksn.tumblr.com', 'kJChG5pOCSiCOXbjefjZFKk0mDWL6X25On0t6hi0uN4JNzqQgo');
+
+  console.log(blog);
+
+  blog.text({limit: 2}, function(error, response) {
+    if (error) {
+      throw new Error(error);
+    }
+
+    console.log(response.posts);
+    res.render('events', { title: 'HKSN', blog: response.posts });
+  });
+});
+
 ////////////////////////////////////////////////
 // HTTP Server
 ////////////////////////////////////////////////

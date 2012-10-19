@@ -7,51 +7,28 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
 <!--
 Header: News!
 -->
 <div id="news">
   <div class="tint">
     <div class="container">
-      <img src="img/logo.png" width="30%" height="30%" />
+      <img src="img/logo.png" width="200px" />
       <!-- <h1>Hong Kong Student Network</h1> -->
-      <p>ipsum dolor sit amet chocolate cake pie I love toffee. Bonbon cheesecake chocolate cake biscuit jujubes. Ice cream pastry jujubes dragée chocolate dragée sweet roll tart. Biscuit cake pie. Jelly-o chocolate croissant tootsie roll I love apple pie caramels ice cream I love. Danish cheesecake I love chocolate bar pie applicake cake chocolate cupcake.</p>
+      <p>The McGill Hong Kong Student Network is a student-run organization officially founded in 2006. With over 200 members within its first year, the vision of the network is to connect students within the McGill student body to Hong Kong by building bridges that facilitate the integration of our members within the Hong Kong community for all purposes including travel and work. This will be done by establishing close relations with relevant parties such as the Hong Kong Alumni Association, as well as organizing social networking opportunities. The executive committee currently consists of 10 passionate and dedicated members with relations to Hong Kong who hope to coordinate events that are in line with our mission such as a mentorship program that will be run in partnership with the Hong Kong Alumni Association.</p>
     </div>
   </div>
 </div>
 
-
 <!--
 Carousel: Photo
 -->
-<div id="photos" class="hidden-phone">
-  <div id="myCarousel" class="carousel slide">
-    <!-- Carousel items -->
-    <div class="carousel-inner">
-      <!-- <div class="active item" style="height: 650px; background: url('/img/4-3.jpeg') no-repeat center center; background-size: cover;"></div> -->
-      <!-- <div class="item" style="height: 650px; background: url('/img/4-1.jpeg') no-repeat center center; background-size: cover;"></div> -->
-      <div class="active item" style="height: 650px; background: url('/img/banner/jan13-skitrip-coverphoto.jpg') no-repeat center left; background-size: cover;"></div>
-<!--       <div class="item" style="height: 650px; background: url('/img/4-2.jpeg') no-repeat center center; background-size: cover;">
-        <div class="carousel-caption">
-          <h4>First Thumbnail label</h4>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-        </div>
-      </div> -->
-      <!--
-      <div class="item">
-        <iframe width="100%" height="650" src="http://www.youtube.com/embed/SMpioQtvIng" frameborder="0" allowfullscreen></iframe>
-        <div class="carousel-caption">
-          <h4>Welcome Party Video</h4>
-          <p>A huge THANK YOU to everyone who came to our Welcome Party last night! We had a wonderful time, and we hope you did too! We were so so happy to meet each of you! We hope to see your beautiful faces again at future events! Here is our Welcome Party video for those of you who couldn't make it to the party and for those of you who did make it and want to watch it again :)</p>
-        </div>
-      </div>
-      -->
-
-    </div>
-    <!-- Carousel nav -->
-    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+<div id="photos">
+  <div id="event-desktop" class="hidden-phone">
+    <img src="/img/banner/jan13-skitrip-coverphoto.jpg" />
+  </div>
+  <div id="event-phone" class="visible-phone">
+    <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn1/560553_483857248300291_425466358_n.jpg" />
   </div>
 </div>
 
@@ -62,12 +39,24 @@ Upcoming Events: Events & Poster
   <div class="tint">
     <div class="container">
       <div class="row">
-
         <!-- events -->
         <div class="itinerary span6 offset1">
           <h1>Upcoming Events</h1>
           <h4>Come hang out, meet new people and have a great time!</h4>
           <ul>
+            <!-- ski trip -->
+            <li>
+              <a href="https://www.facebook.com/events/284066311694135/">
+                <div class="itinerary-date">
+                  <span class="month">JAN</span>
+                  <span class="date">11</span>
+                </div>
+                <div class="itinerary-info">
+                  <strong>WhiteOut Ski/Snowboard Trip 2013</strong><br>
+                  Welcome to the 5th annual MCSS & HKSN Ski and Snowboarding trip!<br/>
+                </div>
+              </a>
+            </li>
             <!-- u me and bbt -->
             <li>
               <a href="https://www.facebook.com/events/494609210564339/">
@@ -77,7 +66,7 @@ Upcoming Events: Events & Poster
                 </div>
                 <div class="itinerary-info">
                   <strong>Food Outing: U, ME & BBT + Exec Meet&Greet!</strong><br>
-                  Enjoy a delicious meal and bubble tea with a great group of people in a friendly atmosphere<br>
+                  Enjoy a delicious meal and bubble tea with a great group of people in a friendly atmosphere<br/>
                 </div>
               </a>
             </li>
@@ -90,11 +79,11 @@ Upcoming Events: Events & Poster
                 </div>
                 <div class="itinerary-info">
                   <strong>CANTO with KIP SIR & MS LEUNG</strong><br>
-                  FREE, interactive and fun classes where you will learn useful Cantonese words and phrases<br>
+                  FREE, interactive and fun classes where you will learn useful Cantonese words and phrases<br/>
                 </div>
               </a>
             </li>
-            <!-- welcome party -->
+            <!-- welcome party
             <li>
               <a href="https://www.facebook.com/events/415936068470910/">
                 <div class="itinerary-date">
@@ -103,10 +92,11 @@ Upcoming Events: Events & Poster
                 </div>
                 <div class="itinerary-info">
                   <strong>Welcome Party: A Night in LKF!</strong><br>
-                  Come join us for a night of GROUP GAMES, PRIZES, HILARIOUS VIDS, DELISH FOOD, and MORE<br>
+                  Come join us for a night of GROUP GAMES, PRIZES, HILARIOUS VIDS, DELISH FOOD, and MORE<br/>
                 </div>
               </a>
             </li>
+            -->
           </ul>
         </div>
 
@@ -118,22 +108,20 @@ Upcoming Events: Events & Poster
         </div> -->
 
         <!-- right poster -->
-        <div class="poster span3 offset1 visible-tablet visible-desktop">
+        <div class="poster span3 offset1 hidden-phone hidden-tablet">
+          <a href="https://www.facebook.com/events/494609210564339/" class="thumbnail">
+            <img src="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash3/523104_495333813819301_291530605_n.jpg" />
+          </a>
+          <!--
           <a href="https://www.facebook.com/events/415936068470910/" class="thumbnail">
             <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn1/560553_483857248300291_425466358_n.jpg" />
           </a>
+          -->
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<!--
-POSTER for phone
--->
-<div id="event-phone" class="visible-phone"></div>
-
 
 <!--
 Sponsors: Google Map
@@ -211,19 +199,17 @@ Footer: Contact
 <div id="contact">
   <div class="container">
     <h1>Contact Us</h1>
-    <p>Um hello</p>
     <div class="row">
-      <div class="span2 well">
-        Our Email
-        <a href="mailto:hksnmcgill@gmail.com">hksnmcgill@gmail.com</a>
+      <div class="span4">
+        <p class="lead">
+          Email <a href="mailto:hksnmcgill@gmail.com">hksnmcgill@gmail.com</a><br/><br/>
+          <a href="http://www.youtube.com/user/HKSNmcgill">Youtube</a><br/>
+          <a href="http://www.facebook.com/hksnmcgill">Facebook</a><br/>
+          <a href="http://twitter.com/McGillHKSN">Twitter</a><br/>
+        </p>
       </div>
-      <div class="span2 well">
-        Youtube<br/>
-        Facebook<br/>
-        Twitter<br/>
-      </div>
-      <div class="span6">
-        <div class="well fb-comments" data-href="http://hksn.ca" data-num-posts="5" data-width="600"></div>
+      <div class="span6 hidden-phone">
+        <div class="well fb-comments" data-href="http://hksn.ca" data-num-posts="5" data-width="400"></div>
       </div>
   </div>
 </div>
