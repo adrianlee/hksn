@@ -1,3 +1,36 @@
-<div class="page-header">
-    <h1>This is a testing, I wonder how this will look like!</h1>
+<header class="jumbotron jumbo_academics subhead" id="overview">
+  <div class="container">
+    <h1>Academics</h1>
+    <p class="lead">Jobs, Internships, Alumni Connections.</p>
+  </div>
+</header>
+
+<br/>
+
+<div class="container">
+
+    <div class="row">
+        <div class="well span3">
+            <h3>About</h3>
+            <p>Some info on this blog</p>
+            <br/>
+            <strong>Latest Posts</strong></br>
+            <ul>
+            {{#each posts}}
+                <li><a href="#{{this.slug}}">{{this.title}}</a></li>
+            {{/each}}
+            </ul>
+        </div>
+        <div class="span8">
+            {{#each posts}}
+            <div class="well">
+                <a id="{{this.slug}}"></a>
+                <h3>{{this.title}}</h3>
+                <p>{{#unescape this.body}}{{/unescape}}</p>
+                <small>Posted on {{this.date}}</small>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
 </div>

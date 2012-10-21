@@ -1,0 +1,42 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=10106218834";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<header class="jumbotron jumbo_food subhead" id="overview">
+  <div class="container">
+    <h1>Food Blog</h1>
+    <p class="lead">Parsley corn chickweed welsh onion gourd courgette desert raisin turnip.</p>
+  </div>
+</header>
+
+<br/>
+
+<div class="container">
+
+    <div class="row">
+        {{#each posts}}
+        <div class="well span8">
+            <a id="{{this.slug}}" href="/food#{{this.slug}}"><h3>{{this.title}}</h3></a>
+            <p>{{#unescape this.body}}{{/unescape}}</p>
+            <small>Posted on {{this.date}}</small>
+            <hr/>
+            <div class="fb-comments" data-href="http://hksn.ca/{{this.slug}}" data-num-posts="5" data-width="620"></div>
+        </div>
+        {{/each}}
+        <div class="well span3">
+            <h3>About</h3>
+            <p>Some info on this blog</p>
+            <br/>
+            <strong>Latest Posts</strong></br>
+            {{#each posts}}
+                <a href="#{{this.slug}}">{{this.title}}</a>
+            {{/each}}
+        </div>
+    </div>
+
+</div>

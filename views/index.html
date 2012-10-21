@@ -15,7 +15,13 @@ Header: News!
     <div class="container">
       <img src="img/logo.png" width="200px" />
       <!-- <h1>Hong Kong Student Network</h1> -->
-      <p>The McGill Hong Kong Student Network is a student-run organization officially founded in 2006. With over 200 members within its first year, the vision of the network is to connect students within the McGill student body to Hong Kong by building bridges that facilitate the integration of our members within the Hong Kong community for all purposes including travel and work. This will be done by establishing close relations with relevant parties such as the Hong Kong Alumni Association, as well as organizing social networking opportunities. The executive committee currently consists of 10 passionate and dedicated members with relations to Hong Kong who hope to coordinate events that are in line with our mission such as a mentorship program that will be run in partnership with the Hong Kong Alumni Association.</p>
+      <br/><br/>
+      <p>The McGill Hong Kong Student Network is a student-run organization officially founded in 2006. With over 400 members this year, the vision of the network is to connect students within the McGill student body to Hong Kong by building bridges that facilitate the integration of our members within the Hong Kong community for all purposes including travel and work. This will be done by establishing close relations with relevant parties such as the Hong Kong Alumni Association, as well as organizing social networking opportunities. The executive committee currently consists of 20 passionate and dedicated members with relations to Hong Kong who hope to coordinate events that are in line with our mission such as a mentorship program that will be run in partnership with the Hong Kong Alumni Association.</p>
+      <br/>
+      <h5>New on the Blog:</h5>
+      {{#each posts}}
+      <p>{{post-date-tag this}} - <a href="/news#">{{this.title}}</a></p>
+      {{/each}}
     </div>
   </div>
 </div>
@@ -24,11 +30,8 @@ Header: News!
 Carousel: Photo
 -->
 <div id="photos">
-  <div id="event-desktop" class="hidden-phone">
-    <img src="/img/banner/jan13-skitrip-coverphoto.jpg" />
-  </div>
-  <div id="event-phone" class="visible-phone">
-    <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn1/560553_483857248300291_425466358_n.jpg" />
+  <div id="event-desktop">
+    <img src="/img/banner/jan13-skitrip-coverphoto.jpg" width="100%" />
   </div>
 </div>
 
@@ -40,13 +43,13 @@ Upcoming Events: Events & Poster
     <div class="container">
       <div class="row">
         <!-- events -->
-        <div class="itinerary span6 offset1">
+        <div class="itinerary span7">
           <h1>Upcoming Events</h1>
           <h4>Come hang out, meet new people and have a great time!</h4>
           <ul>
             <!-- ski trip -->
             <li>
-              <a href="https://www.facebook.com/events/284066311694135/">
+              <a href="/events#whiteout-ski-snowboard-trip-2013">
                 <div class="itinerary-date">
                   <span class="month">JAN</span>
                   <span class="date">11</span>
@@ -57,7 +60,20 @@ Upcoming Events: Events & Poster
                 </div>
               </a>
             </li>
-            <!-- u me and bbt -->
+            <!-- halloween party -->
+            <li>
+              <a href="/events#sin-city-halloween-party-arena">
+                <div class="itinerary-date">
+                  <span class="month">OCT</span>
+                  <span class="date">26</span>
+                </div>
+                <div class="itinerary-info">
+                  <strong>SIN CITY - Halloween Party</strong><br>
+                  Deuces Wild Productions in collaboration with SWAG, MCSS, MTSA, HKSN, MANABA, and CCAS is proud to present "SIN CITY" our biggest and darkest Halloween party.<br/>
+                </div>
+              </a>
+            </li>
+            <!-- u me and bbt
             <li>
               <a href="https://www.facebook.com/events/494609210564339/">
                 <div class="itinerary-date">
@@ -70,12 +86,13 @@ Upcoming Events: Events & Poster
                 </div>
               </a>
             </li>
+            -->
             <!-- canto class -->
             <li>
-              <a href="https://www.facebook.com/events/415936068470910/">
+              <a href="/events#canto-with-kip-sir-and-ms-leung">
                 <div class="itinerary-date">
-                  <span class="month">OCT</span>
-                  <span class="date">04</span>
+                  <span class="month">NOV</span>
+                  <span class="date">01</span>
                 </div>
                 <div class="itinerary-info">
                   <strong>CANTO with KIP SIR & MS LEUNG</strong><br>
@@ -108,9 +125,9 @@ Upcoming Events: Events & Poster
         </div> -->
 
         <!-- right poster -->
-        <div class="poster span3 offset1 hidden-phone hidden-tablet">
+        <div class="poster span3 offset1">
           <a href="https://www.facebook.com/events/494609210564339/" class="thumbnail">
-            <img src="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-ash3/523104_495333813819301_291530605_n.jpg" />
+            <img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-ash4/250580_10151456488612542_264362630_n.jpg" />
           </a>
           <!--
           <a href="https://www.facebook.com/events/415936068470910/" class="thumbnail">
@@ -186,30 +203,50 @@ Sponsors: Google Map
   window.onload = loadScript;
 </script>
 
-<div id="sponsors" class="hidden-phone"></div>
+<!--
+<div id="sponsors" class=""></div>
+-->
 
 <!--
 Corkboard: Team
 -->
-<div id="team"></div>
 
+<!--
+<div id="team"></div>
+-->
+
+
+{{#extend "scripts"}}
+<script>
+  $.ajax({
+    url: "https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name=mcgillhksn&count=3",
+    success: function(data) {
+      $('.result').html(data);
+      alert('Load was performed.');
+    }
+  });
+</script>
+{{/extend}}
+
+<div class="result"></div>
 <!--
 Footer: Contact
 -->
 <div id="contact">
   <div class="container">
-    <h1>Contact Us</h1>
+
     <div class="row">
       <div class="span4">
+        <h1>Contact Us</h1>
         <p class="lead">
           Email <a href="mailto:hksnmcgill@gmail.com">hksnmcgill@gmail.com</a><br/><br/>
-          <a href="http://www.youtube.com/user/HKSNmcgill">Youtube</a><br/>
-          <a href="http://www.facebook.com/hksnmcgill">Facebook</a><br/>
-          <a href="http://twitter.com/McGillHKSN">Twitter</a><br/>
+          <a href="http://www.youtube.com/user/HKSNmcgill" style="text-decoration:none;"><img src="/img/GoSocial/png/32/youtube.png"/> Youtube</a><br/>
+          <a href="http://www.facebook.com/hksnmcgill" style="text-decoration:none;"><img src="/img/GoSocial/png/32/facebook.png"/> Facebook</a><br/>
+          <a href="http://twitter.com/McGillHKSN" style="text-decoration:none;"><img src="/img/GoSocial/png/32/twitter.png"/> Twitter</a><br/>
         </p>
       </div>
-      <div class="span6 hidden-phone">
-        <div class="well fb-comments" data-href="http://hksn.ca" data-num-posts="5" data-width="400"></div>
+      <div class="span6">
+        <div class="well fb-comments" data-href="http://hksn.ca" data-num-posts="5" data-width="500"></div>
       </div>
   </div>
 </div>

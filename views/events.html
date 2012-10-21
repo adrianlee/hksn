@@ -1,2 +1,23 @@
-<script>console.log({{{blog}}})</script>
-hello
+<header class="jumbotron jumbo_events subhead" id="overview">
+  <div class="container">
+    <h1>Events</h1>
+    <p class="lead">Come hang out, meet new people and have a great time!</p>
+  </div>
+</header>
+
+<br/>
+
+<div class="container">
+    {{#each posts}}
+    <div class="row">
+        <div class="span4">
+            <img class="img-rounded" src="{{this.source_url}}" />
+        </div>
+        <div class="well span7">
+            <a id="{{this.slug}}" href="/events#{{this.slug}}"><h3>{{this.title}}</h3></a>
+            <p>{{#unescape this.body}}{{/unescape}}</p>
+            <small>Posted on {{this.date}}</small>
+        </div>
+    </div>
+    {{/each}}
+</div>

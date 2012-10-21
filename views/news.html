@@ -1,0 +1,22 @@
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>News</h1>
+    <p class="lead">Latest updates from HKSN</p>
+  </div>
+</header>
+
+<br/>
+
+<div class="container">
+    {{#each posts}}
+    <div class="row">
+        <div class="span4">
+            <img src="{{this.source_url}}" />
+        </div>
+        <div class="well span6">
+            <h3>{{this.title}}</h3>
+            <p>{{#unescape this.body}}{{/unescape}}</p>
+        </div>
+    </div>
+    {{/each}}
+</div>

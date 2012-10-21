@@ -1,13 +1,16 @@
 {
   "name": "hksn",
-  "version": "0.0.2-4",
+  "version": "0.0.2-11",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
     "express": "*",
-    "hbs": "*"
+    "hbs": "*",
+    "tumblr": "*",
+    "moment": "*",
+    "fb": "*"
   },
   "subdomain": "hksn",
   "engines": {
