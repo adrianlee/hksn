@@ -8,9 +8,6 @@ var express = require('express'),
 var Tumblr = require('tumblr').Tumblr;
 var blog = new Tumblr('mcgillhksn.tumblr.com', 'kJChG5pOCSiCOXbjefjZFKk0mDWL6X25On0t6hi0uN4JNzqQgo');
 
-var FB = require('fb');
-FB.setAccessToken('AAACEdEose0cBAGPHsjqEOjjFNeEy5y7GeEa8CrXZBUwYWGoDYsU3uBqrSSZBbWQZBZCPKcRQLzgUpmHoUOaEbCGnPBNuZBCmsZAzokfpw4CwZDZD');
-
 var moment = require('moment');
 
 var app = express();
@@ -67,9 +64,18 @@ hbs.registerHelper('post-date-tag', function (post) {
       string;
 
   date = moment.unix(post.timestamp).fromNow();
+
   string = date + " - " + post.tags;
 
   return string;
+});
+
+hbs.registerHelper('post-link', function (post) {
+  var temp;
+
+  temp = "<a href=\"/" + post.tags + "\">" + post.title + "</a>";
+
+  return temp;
 });
 
 ////////////////////////////////////////////////
@@ -84,56 +90,38 @@ app.get('/', function(req, res) {
   });
 });
 
-app.get('/page', function(req, res) {
-  FB.api('376965089046024/attending', { fields: ['id', 'name'] }, function (fbres) {
-    if(!fbres || fbres.error) {
-      console.log(fbres.error);
-      return;
-    }
-    console.log(fbres);
-    res.render('page', { title: 'HKSN' });
-  });
-});
-
 app.get('/academics', function(req, res) {
-  blog.posts({tag: "academics"}, function(error, response) {
-    if (error) {
-      throw new Error(error);
-    }
-    res.render('academics', { title: 'HKSN', posts: response.posts });
-  });
+  fetchBlogPost(res, "academics");
 });
 
 app.get('/events', function(req, res) {
-  blog.posts({tag: "events"}, function(error, response) {
-    if (error) {
-      throw new Error(error);
-    }
-    res.render('events', { title: 'HKSN', posts: response.posts });
-  });
+  fetchBlogPost(res, "events");
 });
 
 app.get('/food', function(req, res) {
-  blog.posts({tag: "food"}, function(error, response) {
-    if (error) {
-      throw new Error(error);
-    }
-    res.render('food', { title: 'HKSN', posts: response.posts });
-  });
+  fetchBlogPost(res, "food");
 });
 
 app.get('/news', function(req, res) {
-  blog.posts({tag: "news"}, function(error, response) {
-    if (error) {
-      throw new Error(error);
-    }
-    res.render('news', { title: 'HKSN', posts: response.posts });
-  });
+  fetchBlogPost(res, "news");
+});
+
+app.get('/exec', function(req, res) {
+  fetchBlogPost(res, "exec");
 });
 
 app.get('/sponsors', function(req, res) {
   res.render('sponsors', { title: 'HKSN' });
 });
+
+function fetchBlogPost(res, tag) {
+  blog.posts({tag: tag}, function(error, response) {
+    if (error) {
+      throw new Error(error);
+    }
+    res.render(tag, { title: 'HKSN', posts: response.posts });
+  });
+}
 
 ////////////////////////////////////////////////
 // HTTP Server

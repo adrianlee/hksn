@@ -18,9 +18,9 @@ Header: News!
       <br/><br/>
       <p>The McGill Hong Kong Student Network is a student-run organization officially founded in 2006. With over 400 members this year, the vision of the network is to connect students within the McGill student body to Hong Kong by building bridges that facilitate the integration of our members within the Hong Kong community for all purposes including travel and work. This will be done by establishing close relations with relevant parties such as the Hong Kong Alumni Association, as well as organizing social networking opportunities. The executive committee currently consists of 20 passionate and dedicated members with relations to Hong Kong who hope to coordinate events that are in line with our mission such as a mentorship program that will be run in partnership with the Hong Kong Alumni Association.</p>
       <br/>
-      <h5>New on the Blog:</h5>
+      <h5>What's New:</h5>
       {{#each posts}}
-      <p>{{post-date-tag this}} - <a href="/news#">{{this.title}}</a></p>
+      <p>{{post-date-tag this}} - <a href="/{{this.tags}}#{{this.slug}}">{{this.title}}</a></p>
       {{/each}}
     </div>
   </div>
@@ -245,7 +245,7 @@ Footer: Contact
           <a href="http://twitter.com/McGillHKSN" style="text-decoration:none;"><img src="/img/GoSocial/png/32/twitter.png"/> Twitter</a><br/>
         </p>
       </div>
-      <div class="span6">
+      <div class="span7">
         <div class="well fb-comments" data-href="http://hksn.ca" data-num-posts="5" data-width="500"></div>
       </div>
   </div>

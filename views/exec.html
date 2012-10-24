@@ -1,0 +1,20 @@
+<header class="jumbotron jumbo_exec subhead" id="overview">
+  <div class="container">
+    <h1>Meet the Team</h1>
+    <p class="lead">Get to know us!</p>
+  </div>
+</header>
+
+<br/>
+
+<div class="container">
+    <div class="row">
+        {{#each posts}}
+        <div class="well offset2 span8">
+            <a id="{{this.slug}}" href="/food#{{this.slug}}"><h3>{{this.title}}</h3></a>
+            <p>{{#unescape this.body}}{{/unescape}}</p>
+            <hr/>
+        </div>
+        {{/each}}
+    </div>
+</div>
