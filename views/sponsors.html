@@ -13,27 +13,37 @@
         <ul class="thumbnails">
           <li>
             <div class="thumbnail">
-              <img src="/img/sponsors/CXQlogo.png" alt="" />
+              <a href="http://goo.gl/maps/ZpDMh" class="pop" rel="popover" data-content="<ul><li>Discount: 10%</li></ul>" data-original-title="Restaurant Chuan Xiang Qing 川湘情">
+                  <img src="/img/sponsors/CXQlogo.png" alt="" />
+              </a>
             </div>
           </li>
           <li>
             <div class="thumbnail">
-              <img src="/img/sponsors/CristalChinois.jpg" alt="" />
+              <a href="http://goo.gl/maps/FpwqY" class="pop" rel="popover" data-content="<ul><li>Discount: 10%</li><li>For lunch; For dinner, a la carte only, not for seafood or alcohol</li></ul>" data-original-title="Le Cristal Chinois">
+                <img src="/img/sponsors/CristalChinois.jpg" alt="" />
+              </a>
             </div>
           </li>
           <li>
             <div class="thumbnail">
-              <img src="/img/sponsors/mbrgr_logo.jpg" alt="" />
+              <a href="http://goo.gl/maps/BJrRS" class="pop" rel="popover" data-content="<ul><li>Discount: 10%</li><li>www.mbrgr.com</li></ul>" data-original-title="m:brgr">
+                <img src="/img/sponsors/mbrgr_logo.jpg" alt="" />
+              </a>
             </div>
           </li>
           <li>
             <div class="thumbnail">
-              <img src="/img/sponsors/Kaplan%20Logo.JPG" alt="" />
+              <a href="http://www.kaptest.com/" class="pop" rel="popover" data-content="<ul><li>$100 off on MCAT, LSAT, GMAT, GRE, OAT, DAT, PCAT</li></ul>" data-original-title="Kaplan Test Prep and Admissions">
+                <img src="/img/sponsors/Kaplan%20Logo.JPG" alt="" />
+              </a>
             </div>
           </li>
           <li>
             <div class="thumbnail">
-              <img src="/img/sponsors/snowlogo.jpg" alt="" />
+              <a href="#" class="pop" rel="popover" data-content="<ul><li>10% w/ student ID</li><li>Special coupons (value $20 each) in which customers pay $1 for $5 worth items</li></ul>" data-original-title="Snow">
+                <img src="/img/sponsors/snowlogo.jpg" alt="" />
+              </a>
             </div>
           </li>
         </ul>
@@ -59,6 +69,11 @@
                 <td><a href="http://goo.gl/maps/PeDBa">Map</a></td>
               </tr>
               <tr>
+                <td>Restaurant Amigo (老友记)</td>
+                <td><span class="label label-success">10%</span></td>
+                <td><a href="http://goo.gl/maps/7t4UW">Map</a></td>
+              </tr>
+              <tr>
                 <td>L2 BBT Lounge</td>
                 <td><span class="label label-success">10%</span></td>
                 <td><a href="http://goo.gl/maps/BEF3Z">Map</a></td>
@@ -74,18 +89,18 @@
                 <td><a href="http://goo.gl/maps/5k4Jp">Map</a></td>
               </tr>
               <tr>
-                <td>Thai Phon (#468)</td>
+                <td>Thai Phon</td>
                 <td colspan="1"><span class="label label-warning">Free Pop</td>
                 <td><a href="http://goo.gl/maps/OUNRC">Map</a></td>
               </tr>
               <tr>
                 <td>Sushiman Concordia</td>
-                <td colspan="1"><span class="label label-warning">Free Drink</span></td>
+                <td colspan="1"><span class="label label-warning">Free Drink</span> w/ combo</td>
                 <td><a href="http://goo.gl/maps/J4f0C">Map</a></td>
               </tr>
               <tr>
                 <td>La Cremière (Eaton Centre)</td>
-                <td colspan="1"><span class="label label-success">10%</span> off everything</td>
+                <td colspan="1"><span class="label label-success">10%</span> off everything, <br/>Banana Split, <br/>Care au Chocolat, <br/>& Black Forest - $1 off</td>
                 <td><a href="http://goo.gl/maps/9GxZO">Map</a></td>
               </tr>
               <tr>
@@ -155,13 +170,13 @@
               </tr>
               <tr>
                 <td>Atti</td>
-                <td colspan="1"><span class="label label-warning">Free Drink</span></td>
+                <td colspan="1"><span class="label label-warning">Free Drink</span> on Tues, <br/>Wed, Thurs only</td>
                 <td><a href="http://goo.gl/maps/gb90W">Map</a></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="well span8">
+        <div class="well span8 pull-right">
             <table class="table table-hover table-striped table-condensed">
               <thead>
                 <tr>
@@ -196,3 +211,12 @@
         </div>
     </div>
 </div>
+
+{{#extend "scripts"}}
+<script>
+  $('.pop').popover({ animation: false, trigger: "hover", placement: "bottom"});
+</script>
+<script>
+  $("#nav_sponsors").addClass("active");
+</script>
+{{/extend}}

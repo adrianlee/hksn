@@ -11,10 +11,16 @@
     <div class="row">
         {{#each posts}}
         <div class="well offset2 span8">
-            <a id="{{this.slug}}" href="/food#{{this.slug}}"><h3>{{this.title}}</h3></a>
+            <a id="{{this.slug}}" href="/exec#{{this.slug}}"><h3>{{this.title}}</h3></a>
             <p>{{#unescape this.body}}{{/unescape}}</p>
             <hr/>
         </div>
         {{/each}}
     </div>
 </div>
+
+{{#extend "scripts"}}
+<script>
+  $("#nav_exec").addClass("active");
+</script>
+{{/extend}}

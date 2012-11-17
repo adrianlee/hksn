@@ -83,10 +83,17 @@ hbs.registerHelper('post-link', function (post) {
 ////////////////////////////////////////////////
 app.get('/', function(req, res) {
   blog.posts({limit: 3}, function(error, response) {
+    var newArray = [];
     if (error) {
       throw new Error(error);
     }
-    res.render('index', { title: 'HKSN', posts: response.posts });
+    for (var i=0; i < response.posts.length; i++) {
+      if (response.posts[i].tags != "about") {
+        newArray.push(response.posts[i]);
+      }
+    }
+    console.log(newArray);
+    res.render('index', { title: 'HKSN', posts: newArray });
   });
 });
 
@@ -99,7 +106,13 @@ app.get('/events', function(req, res) {
 });
 
 app.get('/food', function(req, res) {
-  fetchBlogPost(res, "food");
+  blog.posts({tag: "about"}, function(error, response) {
+    if (error) {
+      throw new Error(error);
+    }
+    console.log(response.posts);
+    fetchBlogPost(res, "food", response.posts[0]);
+  });
 });
 
 app.get('/news', function(req, res) {
@@ -114,12 +127,13 @@ app.get('/sponsors', function(req, res) {
   res.render('sponsors', { title: 'HKSN' });
 });
 
-function fetchBlogPost(res, tag) {
+function fetchBlogPost(res, tag, extra) {
   blog.posts({tag: tag}, function(error, response) {
     if (error) {
       throw new Error(error);
     }
-    res.render(tag, { title: 'HKSN', posts: response.posts });
+    // console.log(response.posts);
+    res.render(tag, { title: 'HKSN', posts: response.posts, about: extra });
   });
 }
 

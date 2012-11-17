@@ -19,24 +19,32 @@
 <div class="container">
 
     <div class="row">
+        <div class="well span3 pull-right">
+            <h3>{{about.title}}</h3>
+            <p>{{#unescape about.body}}{{/unescape}}</p>
+            <br/>
+            <strong>Latest Posts</strong></br>
+            <ul>
+            {{#each posts}}
+                <li><a href="#{{this.slug}}">{{this.title}}</a></li>
+            {{/each}}
+            </ul>
+        </div>
         {{#each posts}}
         <div class="well span8">
             <a id="{{this.slug}}" href="/food#{{this.slug}}"><h3>{{this.title}}</h3></a>
             <p>{{#unescape this.body}}{{/unescape}}</p>
             <small>Posted on {{this.date}}</small>
             <hr/>
-            <div class="fb-comments" data-href="http://hksn.ca/{{this.slug}}" data-num-posts="5" data-width="620"></div>
+            <div class="fb-comments" data-href="http://hksn.ca/food/#{{this.slug}}" data-num-posts="5" data-width="620"></div>
         </div>
         {{/each}}
-        <div class="well span3">
-            <h3>About</h3>
-            <p>Some info on this blog</p>
-            <br/>
-            <strong>Latest Posts</strong></br>
-            {{#each posts}}
-                <a href="#{{this.slug}}">{{this.title}}</a>
-            {{/each}}
-        </div>
     </div>
 
 </div>
+
+{{#extend "scripts"}}
+<script>
+  $("#nav_food").addClass("active");
+</script>
+{{/extend}}

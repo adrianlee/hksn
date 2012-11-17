@@ -2,7 +2,7 @@ body {
   font: 87% "Open Sans", "Lucida Grande", Helvetica, Arial, sans-serif;
   font-family: "Open Sans", "Helvetica Neue", "Lucida Grande", Helvetica, Arial, sans-serif;
   font-weight: 300;
-  background-color: #111;
+  background-color: #fff;
 }
 
 a {
@@ -181,8 +181,8 @@ h1, h2, h3, h4, h5, h6 {
  * Contact
  */
 #contact {
-  background-color: #111;
-  color: #fff;
+  background-color: #fff;
+  color: #333;
   padding-top: 100px;
 }
 
@@ -290,4 +290,23 @@ h1, h2, h3, h4, h5, h6 {
 .thumbnail {
   padding: 0px;
   border: #ffffff 2px solid;
+}
+
+.skyline {
+  background: url("http://24.media.tumblr.com/tumblr_m7vo4ugROn1rcum71o1_1280.png") repeat-x bottom center;
+  height: 750px;
+  width: 100%;
+  position: relative;
+}
+
+.navbar-inner {
+  /*height: 60px;*/
+}
+
+.nav > li {
+  /*margin-top: 10px;*/
+}
+
+.color1 {
+  color: #B94458;
 }
