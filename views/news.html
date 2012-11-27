@@ -10,10 +10,7 @@
 <div class="container">
     {{#each posts}}
     <div class="row">
-        <div class="span4">
-            <img src="{{this.source_url}}" />
-        </div>
-        <div class="well span6">
+        <div class="well span8 offset2">
             <h3>{{this.title}}</h3>
             <p>{{#unescape this.body}}{{/unescape}}</p>
         </div>
