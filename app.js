@@ -20,12 +20,12 @@ app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'html');
   app.engine('html', require('hbs').__express);
+  app.use(express.static(path.join(__dirname, 'public'), {maxAge: 86400000}));
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
 });
 
 app.configure('development', function(){
@@ -92,7 +92,7 @@ app.get('/', function(req, res) {
         newArray.push(response.posts[i]);
       }
     }
-    console.log(newArray);
+    // console.log(newArray);
     res.render('index', { title: 'HKSN', posts: newArray });
   });
 });
@@ -110,7 +110,7 @@ app.get('/food', function(req, res) {
     if (error) {
       throw new Error(error);
     }
-    console.log(response.posts);
+    //console.log(response.posts);
     fetchBlogPost(res, "food", response.posts[0]);
   });
 });
@@ -132,7 +132,12 @@ function fetchBlogPost(res, tag, extra) {
     if (error) {
       throw new Error(error);
     }
+    console.log(response.posts.length);
     // console.log(response.posts);
+    for (var i in response.posts) {
+      console.log(response.posts[i].title);
+    }
+
     res.render(tag, { title: 'HKSN', posts: response.posts, about: extra });
   });
 }

@@ -4,17 +4,17 @@
     "hksn.ca",
     "www.hksn.ca"
   ],
-  "version": "1.0.1",
+  "version": "1.0.2-1",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
-  "dependencies": {
-    "express": "*",
-    "hbs": "*",
-    "tumblr": "*",
-    "moment": "*"
-  },
+  "bundleDependencies": [
+    "express",
+    "hbs",
+    "tumblr",
+    "moment"
+  ],
   "subdomain": "hksn",
   "engines": {
     "node": "0.8.x"
