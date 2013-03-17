@@ -25,6 +25,7 @@
     </div>
   </div> -->
   <br>
+  <h1>Kaplan Online Auction</h1>
   {{#if user}}
   {{else}}
     <a href="/auth/facebook" class="btn btn-info btn-large">Login With Facebook</a>
@@ -147,7 +148,7 @@ $(function($) {
 
     $.each(data, function(key, val) {
       if (val.facebook_id) {
-        items += "<a alt='" + val.display_name + "' href='http://facebook.com/" + val.facebook_id + "'><img class='img-rounded' src='https://graph.facebook.com/" + val.facebook_id + "/picture'></a>";
+        items += "<a alt='" + val.display_name + "' href='http://facebook.com/" + val.facebook_id + "'><img class='img-rounded' src='https://graph.facebook.com/" + val.facebook_id + "/picture'></a> ";
       }
     });
 
