@@ -1,6 +1,8 @@
 var express = require('express'),
     http = require('http'),
     path = require('path'),
+    passport = require('passport'),
+
 
     // Third Party
     hbs = require('hbs');
@@ -10,21 +12,32 @@ var blog = new Tumblr('mcgillhksn.tumblr.com', 'kJChG5pOCSiCOXbjefjZFKk0mDWL6X25
 
 var moment = require('moment');
 
+var pass = require('./lib/passport');
+
 var app = express();
+
+var api = require('./lib/api');
+
+var RedisStore = require('connect-redis')(express);
 
 ////////////////////////////////////////////////
 // Express Configuration
 ////////////////////////////////////////////////
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.argv[2] || process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'html');
   app.engine('html', require('hbs').__express);
   app.use(express.static(path.join(__dirname, 'public'), {maxAge: 86400000}));
   app.use(express.favicon());
   app.use(express.logger('dev'));
+  app.use(express.cookieParser());
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(express.session({ store: new RedisStore({host: "cod.redistogo.com", port: "10354", pass: "64f066699f523cb0ee31b766b4625f62"}), secret: 'keyboard cat' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(api);
   app.use(app.router);
 });
 
@@ -78,6 +91,15 @@ hbs.registerHelper('post-link', function (post) {
   return temp;
 });
 
+hbs.registerHelper('json', function(json) {
+  try {
+    return JSON.stringify(json, null, ' ');
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+
 ////////////////////////////////////////////////
 // Router
 ////////////////////////////////////////////////
@@ -95,6 +117,12 @@ app.get('/', function(req, res) {
     // console.log(newArray);
     res.render('index', { title: 'HKSN', posts: newArray });
   });
+});
+
+app.get('/kaplan', function(req, res) {
+  console.log(req.user);
+  res.locals.user = req.user;
+  res.render('kaplan_auction', { title: 'HKSN' });
 });
 
 app.get('/academics', function(req, res) {
@@ -141,6 +169,26 @@ function fetchBlogPost(res, tag, extra) {
     res.render(tag, { title: 'HKSN', posts: response.posts, about: extra });
   });
 }
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook', {
+    scope: [
+      'email'
+    ]
+  })
+);
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {
+    successRedirect: '/kaplan',
+    failureRedirect: '/kaplan'
+  })
+);
+
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
 
 ////////////////////////////////////////////////
 // HTTP Server

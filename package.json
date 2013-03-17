@@ -13,7 +13,13 @@
     "express",
     "hbs",
     "tumblr",
-    "moment"
+    "moment",
+    "passport",
+    "passport-facebook",
+    "lodash",
+    "pkginfo",
+    "mongoose",
+    "connect-redis"
   ],
   "subdomain": "hksn",
   "engines": {

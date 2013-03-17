@@ -1,0 +1,169 @@
+<link href="flat/css/flat-ui.css" rel="stylesheet">
+<style>
+.navbar {
+  font: 87% "Open Sans", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 40px;
+}
+
+.navbar-inner {
+  height: 40px;
+}
+
+.nav > li {
+  height: 40px;
+  line-height: 10px;
+}
+</style>
+
+<div class="container">
+<!--   <div class="row">
+    <div class="span6">
+      <img src="img/logo.png" height="100px" alt="" />
+      <img src="img/kaplan.jpg" height="50px" alt="" />
+    </div>
+  </div> -->
+  <br>
+  {{#if user}}
+  {{else}}
+    <a href="/auth/facebook" class="btn btn-info btn-large">Login With Facebook</a>
+  {{/if}}
+
+  {{#if user}}
+  <h2>Hello {{user.display_name}}</h2>
+  <br>
+
+  <h1>Current bid: $<span id="current_bid">0</span></h1>
+  <h3>Latest bid: <span id="latest_bid">0</span></h3>
+
+  <br><br>
+  <h4>Increase the bid by placing one:</h4>
+  <a id="place5" class="btn btn-large palette palette-bright"><span class="fui-plus-16"></span> $5</a>
+  <a id="place10" class="btn btn-large palette palette-bright-dark"><span class="fui-plus-16"></span> $10</a>
+  <a id="place20" class="btn btn-large palette palette-carrot"><span class="fui-plus-16"></span> $20</a>
+
+  <br><br>
+
+  <h4>People participating in auction:</h4>
+  <div id="participants"></div>
+
+  <br><br>
+
+  <h4><span class="fui-time-24"></span> Bidding History</h4>
+  <ul id="history"></ul>
+
+  {{/if}}
+
+  <!-- <pre>{{json user}}</pre> -->
+
+</div>
+
+
+<script src="flat/js/jquery-1.8.2.min.js"></script>
+<script src="flat/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="flat/js/jquery.dropkick-1.0.0.js"></script>
+<script src="flat/js/custom_checkbox_and_radio.js"></script>
+<script src="flat/js/custom_radio.js"></script>
+<script src="flat/js/jquery.tagsinput.js"></script>
+<script src="flat/js/bootstrap-tooltip.js"></script>
+<script src="flat/js/jquery.placeholder.js"></script>
+<script src="http://vjs.zencdn.net/c/video.js"></script>
+<script src="flat/js/application.js"></script>
+<script src="js/moment.js"></script>
+<script>
+$(function($) {
+  kaplan = {};
+  current_bid = 0;
+
+  kaplan.fetchCurrentBid = function() {
+    $.getJSON('api/fetchCurrentBid', function(data) {
+      if (data.current_bid) {
+        current_bid = data.current_bid;
+        $('#current_bid').text(data.current_bid);
+      }
+    });
+  };
+
+  kaplan.fetchLatestBid = function() {
+    $.getJSON('api/fetchLatestBid', function(data) {
+      if (data[0]) {
+        $('#latest_bid').text("$" + data[0].bid_amount + " by " + data[0].display_name + " " + moment(new Date(data[0].timestamp)).fromNow());
+      }
+    });
+  };
+
+  kaplan.fetchAllBids = function() {
+    $.getJSON('api/fetchAllBid', function(data) {
+      if (data[0]) {
+        $('#latest_bid').text("$" + data[0].bid_amount + " by " + data[0].display_name + " " + moment(new Date(data[0].timestamp)).fromNow());
+      }
+
+      var history = "";
+      if (data) {
+        $.each(data, function (key, val) {
+          history += "<li>$" + val.bid_amount + " by " + val.display_name + " " + moment(new Date(val.timestamp)).fromNow() + "</li>";
+        });
+
+        $('#history').html(history);
+      }
+    });
+  };
+
+  kaplan.placeBid = function(bid_amount) {
+    $.getJSON('api/fetchCurrentBid', function(data) {
+      if (data.current_bid) {
+        current_bid = data.current_bid;
+      }
+      var r = confirm("Are you sure you want to increase the current bid of " + current_bid + " by " + bid_amount + "?");
+      $.post('api/placeBid/' + bid_amount, function (data) {
+        if (data.error) {
+          console.log(data.error);
+        }
+        alert("Thank You {{user.display_name}}, your bid of " + bid_amount + " was placed.");
+        console.log(data);
+        kaplan.fetchCurrentBid();
+        kaplan.fetchAllBids();
+      });
+    });
+  };
+
+  $('#place5').click(function () {
+    kaplan.placeBid(5);
+  });
+
+  $('#place10').click(function () {
+    kaplan.placeBid(10);
+  });
+
+  $('#place20').click(function () {
+    kaplan.placeBid(20);
+  });
+
+  // USERS
+  $.getJSON('api/users', function(data) {
+    var items = "";
+
+    $.each(data, function(key, val) {
+      if (val.facebook_id) {
+        items += "<a alt='" + val.display_name + "' href='http://facebook.com/" + val.facebook_id + "'><img class='img-rounded' src='https://graph.facebook.com/" + val.facebook_id + "/picture'></a>";
+      }
+    });
+
+    $('#participants').html(items);
+  });
+
+
+  // init
+
+  kaplan.fetchCurrentBid();
+  // kaplan.fetchLatestBid();
+  kaplan.fetchAllBids();
+
+  setInterval(function () {
+    kaplan.fetchCurrentBid();
+    // kaplan.fetchLatestBid();
+    kaplan.fetchAllBids();
+  }, 5000);
+});
+</script>
