@@ -117,16 +117,19 @@ $(function($) {
         current_bid = data.current_bid;
       }
       var r = confirm("Are you sure you want to increase the current bid of " + current_bid + " by " + bid_amount + "?");
-      $.post('api/placeBid/' + bid_amount, function (data) {
-        if (data.error) {
-          alert("Something went wrong. Your bid of " + bid_amount + " may not have been placed.");
-          console.log(data.error);
-        }
-        alert("Thank You {{user.display_name}}, your bid of " + bid_amount + " was placed.");
-        console.log(data);
-        kaplan.fetchCurrentBid();
-        kaplan.fetchAllBids();
-      });
+
+      if (r) {
+        $.post('api/placeBid/' + bid_amount, function (data) {
+          if (data.error) {
+            alert("Something went wrong. Your bid of " + bid_amount + " may not have been placed.");
+            console.log(data.error);
+          }
+          alert("Thank You {{user.display_name}}, your bid of " + bid_amount + " was placed.");
+          console.log(data);
+          kaplan.fetchCurrentBid();
+          kaplan.fetchAllBids();
+        });
+      }
     });
   };
 
