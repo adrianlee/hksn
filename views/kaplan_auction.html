@@ -31,7 +31,7 @@
   {{/if}}
 
   {{#if user}}
-  <h2>Hello {{user.display_name}}</h2>
+  <h2>Hello {{user.display_name}},</h2>
   <br>
 
   <h1>Current bid: $<span id="current_bid">0</span></h1>
@@ -118,6 +118,7 @@ $(function($) {
       var r = confirm("Are you sure you want to increase the current bid of " + current_bid + " by " + bid_amount + "?");
       $.post('api/placeBid/' + bid_amount, function (data) {
         if (data.error) {
+          alert("Something went wrong. Your bid of " + bid_amount + " may not have been placed.");
           console.log(data.error);
         }
         alert("Thank You {{user.display_name}}, your bid of " + bid_amount + " was placed.");
