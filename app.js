@@ -3,7 +3,6 @@ var express = require('express'),
     path = require('path'),
     passport = require('passport'),
 
-
     // Third Party
     hbs = require('hbs');
 

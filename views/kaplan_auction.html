@@ -40,9 +40,8 @@
 
   <br><br>
   <h4><span class="fui-plus-24"></span> Increase the bid by placing one:</h4>
-  <a id="place5" class="btn btn-large palette palette-bright"><span class="fui-plus-16"></span> $5</a>
-  <a id="place10" class="btn btn-large palette palette-bright-dark"><span class="fui-plus-16"></span> $10</a>
-  <a id="place20" class="btn btn-large palette palette-carrot"><span class="fui-plus-16"></span> $20</a>
+  <a id="place50" class="btn btn-large palette palette-bright"><span class="fui-plus-16"></span> $50</a>
+  <a id="place100" class="btn btn-large palette palette-bright-dark"><span class="fui-plus-16"></span> $100</a>
 
   <br><br>
 
@@ -97,14 +96,17 @@ $(function($) {
   kaplan.fetchAllBids = function() {
     $.getJSON('api/fetchAllBid', function(data) {
       if (data[0]) {
-        $('#latest_bid').text("$" + data[0].bid_amount + " by " + data[0].display_name + " " + moment(new Date(data[0].timestamp)).fromNow());
+        $('#latest_bid').text("$" + data[0].bid_amount + ", " + moment(new Date(data[0].timestamp)).fromNow());
       }
 
       var history = "";
+      var bid_count = 550;
       if (data) {
-        $.each(data, function (key, val) {
-          history += "<li>$" + val.bid_amount + " by " + val.display_name + " " + moment(new Date(val.timestamp)).fromNow() + "</li>";
-        });
+        for (var i = data.length-1; i >= 0; i--) {
+          console.log(data[i]);
+          bid_count += data[i].bid_amount;
+          history = "<li>$" + bid_count + " at " + moment(new Date(data[i].timestamp)).format('MMM Do, h:mm:ss a') + "</li>" + history;
+        }
 
         $('#history').html(history);
       }
@@ -133,16 +135,12 @@ $(function($) {
     });
   };
 
-  $('#place5').click(function () {
-    kaplan.placeBid(5);
+  $('#place50').click(function () {
+    kaplan.placeBid(50);
   });
 
-  $('#place10').click(function () {
-    kaplan.placeBid(10);
-  });
-
-  $('#place20').click(function () {
-    kaplan.placeBid(20);
+  $('#place100').click(function () {
+    kaplan.placeBid(100);
   });
 
   // USERS
