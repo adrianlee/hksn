@@ -28,30 +28,90 @@
   <h1>Kaplan Online Auction</h1>
   {{#if user}}
   {{else}}
-    <a href="/auth/facebook" class="btn btn-info btn-large">Login With Facebook</a>
+    <div class="row">
+      <div class="span10">
+        <p class="lead">
+          Are you planning on going to medical school and need to take the MCAT?!<br/> Well, we have the solution for you!<br/><br/> HKSN presents to you an online auction for a MCAT Classroom Anywhere Course package sponsored by Kaplan worth <b>$2000</b>!
+        </p>
+        <p class="lead">
+          AUCTION DURATION:<br/>
+          START: <b>Saturday, March 30 @ 10:00 AM</b><br/>
+          FINISH: <b>Sunday, April 7 @ 11:59 PM</b><br/>
+          STARTING BID: <b>$550</b>.
+        </p>
+        <p class="lead">
+          Bids will go up only as increments of $50!<br/>
+          <!-- The online auction will happen on this page: <a href="http://hksn.ca/kaplan">http://hksn.ca/kaplan</a> -->
+          <a href="/auth/facebook" class="btn btn-info btn-large">CLICK HERE TO START BIDDING</a>
+        </p>
+
+        <p class="lead">
+          WANT TO TAKE SOME OTHER COURSE?
+          HKSN + Kaplan is providing you with $100 off any of the courses for MCAT, LSAT, GMAT, GRE, DAT, OAT, and PCAT!<br/><br/>
+          Just enter this code for when you sign up for the test:<br/>
+          More information on the courses that can be taken: <a href="http://www.kaptest.com/anywhere">http://www.kaptest.com/anywhere</a>
+        </p>
+      </div>
+    </div>
+    <!--<a href="/auth/facebook" class="btn btn-info btn-large">Start bidding now</a>-->
   {{/if}}
-
   {{#if user}}
-  <h2>Hello {{user.display_name}},</h2>
-  <br>
+    {{#if user.registered}}
+    <div class="row">
+      <div class="span7">
+    <h2>Hello {{user.display_name}},</h2>
+    <br>
 
-  <h1>Current bid: $<span id="current_bid">0</span></h1>
-  <h5>Latest bid: <span id="latest_bid">0</span></h5>
 
-  <br><br>
-  <h4><span class="fui-plus-24"></span> Increase the bid by placing one:</h4>
-  <a id="place50" class="btn btn-large palette palette-bright"><span class="fui-plus-16"></span> $50</a>
-  <a id="place100" class="btn btn-large palette palette-bright-dark"><span class="fui-plus-16"></span> $100</a>
+    <h4>AUCTION START: Saturday, March 30 @ 10:00 AM</h4>
+    <h4>AUCTION FINISH: Sunday, April 7 @ 11:59 PM</h4><br/>
+    <h1>Current bid: $<span id="current_bid">0</span></h1>
+    <h5>Latest bid: <span id="latest_bid">0</span></h5>
 
-  <br><br>
+    <br><br>
+    <h4><span class="fui-plus-24"></span> Increase the bid by placing one:</h4>
+    <a id="place50" class="btn btn-large palette palette-bright"><span class="fui-plus-16"></span> $50</a>
 
-  <h4><span class="fui-man-24"></span> People participating in auction:</h4>
-  <div id="participants"></div>
+    <br><br>
 
-  <br><br>
+    <h4><span class="fui-man-24"></span> People participating in auction:</h4>
+    <div id="participants"></div>
 
-  <h4><span class="fui-time-24"></span> Bidding History</h4>
-  <ul id="history"></ul>
+    <br><br>
+
+    <h4><span class="fui-time-24"></span> Bidding History</h4>
+    <ul id="history"></ul>
+
+  </div>
+  <div class="span5">
+    <p class="lead well">
+      WANT TO TAKE SOME OTHER COURSE?<br/><br/>
+      HKSN + Kaplan is providing you with $100 off any of the courses for MCAT, LSAT, GMAT, GRE, DAT, OAT, and PCAT!<br/><br/>
+      Just enter this code for when you sign up for the test:<br/><br/>
+      More information on the courses that can be taken: <a href="http://www.kaptest.com/anywhere">http://www.kaptest.com/anywhere</a>
+    </p>
+  </div>
+</div>
+
+    {{else}}
+    <br/>
+    <h4><span class="fui-mail-24"></span> Enter your email so we can contact you if you win the auction!</h4>
+    <input id="email" type="text" value="" placeholder="your@email.com" class="span4"></input>
+    <br/>
+    <br/>
+    <h4><span class="fui-new-24"></span> Accept our terms of agreement</h4>
+    <ul>
+      <!-- <li>By using HKSN Kaplan Auction you agree to all the terms below.</li> -->
+      <li>To fully use the auction services you will need to supply us a valid email address which we can contact you at.</li>
+      <li>If you hold the winning bid, you are responsible for completing the auction transaction.</li>
+      <li>We hold the right to use your lastest facebook profile picture in the auction page.</li>
+      <li>If you bid on the auction more than your fair share(such as spamming bids), we reserve the right to erase your account and bidding history.</li>
+      <li>If these terms of use change, we will notify you.</li>
+
+    <br/>
+
+    <a id="register" class="btn btn-large btn-primary">I agree to all of the terms stated above</a>
+    {{/if}}
 
   {{/if}}
 
@@ -72,6 +132,7 @@
 <script src="flat/js/application.js"></script>
 <script src="js/moment.js"></script>
 <script>
+$("#kaplan").addClass("active");
 $(function($) {
   kaplan = {};
   current_bid = 0;
@@ -103,7 +164,7 @@ $(function($) {
       var bid_count = 550;
       if (data) {
         for (var i = data.length-1; i >= 0; i--) {
-          console.log(data[i]);
+          // console.log(data[i]);
           bid_count += data[i].bid_amount;
           history = "<li>$" + bid_count + " at " + moment(new Date(data[i].timestamp)).format('MMM Do, h:mm:ss a') + "</li>" + history;
         }
@@ -114,25 +175,33 @@ $(function($) {
   };
 
   kaplan.placeBid = function(bid_amount) {
-    $.getJSON('api/fetchCurrentBid', function(data) {
-      if (data.current_bid) {
-        current_bid = data.current_bid;
-      }
-      var r = confirm("Are you sure you want to increase the current bid of " + current_bid + " by " + bid_amount + "?");
+    if ((new Date().getTime() < (new Date("March 30, 2013 10:00:00")).getTime())) {
+      return alert("Sorry {{user.display_name}}, the auction hasn't started yet");
+    }
 
-      if (r) {
-        $.post('api/placeBid/' + bid_amount, function (data) {
-          if (data.error) {
-            alert("Something went wrong. Your bid of " + bid_amount + " may not have been placed.");
-            console.log(data.error);
-          }
-          alert("Thank You {{user.display_name}}, your bid of " + bid_amount + " was placed.");
-          console.log(data);
-          kaplan.fetchCurrentBid();
-          kaplan.fetchAllBids();
-        });
-      }
-    });
+    if ((new Date().getTime() < (new Date("April 7, 2013 23:59:00")).getTime())) {
+      $.getJSON('api/fetchCurrentBid', function(data) {
+        if (data.current_bid) {
+          current_bid = data.current_bid;
+        }
+        var r = confirm("Are you sure you want to increase the current bid of " + current_bid + " by " + bid_amount + "?");
+
+        if (r) {
+          $.post('api/placeBid/' + bid_amount, function (data) {
+            if (data.error) {
+              alert("Something went wrong. Your bid of " + bid_amount + " may not have been placed.");
+              console.log(data.error);
+            }
+            alert("Thank You {{user.display_name}}, your bid of " + bid_amount + " was placed.");
+            // console.log(data);
+            kaplan.fetchCurrentBid();
+            kaplan.fetchAllBids();
+          });
+        }
+      });
+    } else {
+      alert("Sorry {{user.display_name}}, auction has already ended.")
+    }
   };
 
   $('#place50').click(function () {
@@ -168,5 +237,29 @@ $(function($) {
     // kaplan.fetchLatestBid();
     kaplan.fetchAllBids();
   }, 5000);
+
+  function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+
+  $('#register').click(function () {
+
+    if (validateEmail($('#email').val())) {
+      $.post("api/register", { email: $('#email').val() })
+      .done(function(data) {
+        if (data && data.status == 200) {
+          console.log("refresh")
+          location.reload();
+        } else {
+          alert("Something went wrong! Contact Adrian, jun.irok@gmail.com");
+        }
+      });
+    } else {
+      alert("Please enter a valid email address");
+    }
+
+  });
 });
 </script>
