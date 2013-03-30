@@ -175,7 +175,7 @@ $(function($) {
   };
 
   kaplan.placeBid = function(bid_amount) {
-    if ((new Date().getTime() < (new Date("March 30, 2013 10:00:00")).getTime())) {
+    if ((new Date().getTime() > (new Date("March 30, 2013 10:00:00")).getTime())) {
       return alert("Sorry {{user.display_name}}, the auction hasn't started yet");
     }
 
@@ -184,6 +184,11 @@ $(function($) {
         if (data.current_bid) {
           current_bid = data.current_bid;
         }
+
+        if (data.facebook_id == "{{user.facebook_id}}") {
+          return alert("You already hold the winning bid! You can't bid again until someone has beat the current bid of $" + current_bid);
+        }
+
         var r = confirm("Are you sure you want to increase the current bid of " + current_bid + " by " + bid_amount + "?");
 
         if (r) {
@@ -253,7 +258,7 @@ $(function($) {
           console.log("refresh")
           location.reload();
         } else {
-          alert("Something went wrong! Contact Adrian, jun.irok@gmail.com");
+          alert("Something went wrong! Let us know about it!");
         }
       });
     } else {
