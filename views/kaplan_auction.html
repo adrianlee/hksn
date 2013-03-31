@@ -64,7 +64,7 @@
     <br>
 
 
-    <h4>AUCTION START: Saturday, March 30 @ 10:00 AM</h4>
+    <h4>AUCTION START: Sunday, March 31 @ 10:00 AM</h4>
     <h4>AUCTION FINISH: Sunday, April 7 @ 11:59 PM</h4><br/>
     <h1>Current bid: $<span id="current_bid">0</span></h1>
     <h5>Latest bid: <span id="latest_bid">0</span></h5>
@@ -166,7 +166,7 @@ $(function($) {
       var history = "";
       var bid_count = 550;
       if (data) {
-        for (var i = data.length-1; i >= 0; i--) {
+        for (var i = data.length - 1; i >= 0; i--) {
           // console.log(data[i]);
           bid_count += data[i].bid_amount;
           history = "<li>$" + bid_count + " at " + moment(new Date(data[i].timestamp)).format('MMM Do, h:mm:ss a') + "</li>" + history;
@@ -178,7 +178,7 @@ $(function($) {
   };
 
   kaplan.placeBid = function(bid_amount) {
-    if ((new Date().getTime() < (new Date("March 30, 2013 10:00:00")).getTime())) {
+    if ((new Date().getTime() < (new Date("March 31, 2013 10:00:00")).getTime())) {
       return alert("Sorry {{user.display_name}}, the auction hasn't started yet");
     }
 
@@ -195,7 +195,7 @@ $(function($) {
         var r = confirm("Are you sure you want to increase the current bid of " + current_bid + " by " + bid_amount + "?");
 
         if (r) {
-          $.post('api/placeBid/' + bid_amount, function (data) {
+          $.post('api/placeBid/' + bid_amount, function(data) {
             if (data.error) {
               alert("Something went wrong. Your bid of " + bid_amount + " may not have been placed.");
               console.log(data.error);
@@ -212,11 +212,11 @@ $(function($) {
     }
   };
 
-  $('#place50').click(function () {
+  $('#place50').click(function() {
     kaplan.placeBid(50);
   });
 
-  $('#place100').click(function () {
+  $('#place100').click(function() {
     kaplan.placeBid(100);
   });
 
@@ -240,7 +240,7 @@ $(function($) {
   // kaplan.fetchLatestBid();
   kaplan.fetchAllBids();
 
-  setInterval(function () {
+  setInterval(function() {
     kaplan.fetchCurrentBid();
     // kaplan.fetchLatestBid();
     kaplan.fetchAllBids();
@@ -252,11 +252,13 @@ $(function($) {
   }
 
 
-  $('#register').click(function () {
+  $('#register').click(function() {
 
     if (validateEmail($('#email').val())) {
-      $.post("api/register", { email: $('#email').val() })
-      .done(function(data) {
+      $.post("api/register", {
+        email: $('#email').val()
+      })
+        .done(function(data) {
         if (data && data.status == 200) {
           console.log("refresh")
           location.reload();
