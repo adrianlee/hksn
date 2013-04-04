@@ -1,4 +1,12 @@
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# mcgillhksn: http://ogp.me/ns/fb/mcgillhksn#">
+  <meta property="fb:app_id" content="598389053522129" />
+  <meta property="og:type"   content="mcgillhksn:kaplan_auction" />
+  <meta property="og:url"    content="http://hksn.ca/kaplan" />
+  <meta property="og:title"  content="Kaplan Auction" />
+  <meta property="og:image"  content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" />
+
 <link href="flat/css/flat-ui.css" rel="stylesheet">
+
 <style>
 .navbar {
   font: 87% "Open Sans", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -38,7 +46,8 @@
           AUCTION DURATION:<br/>
           START: <b>Saturday, March 30 @ 10:00 AM</b><br/>
           FINISH: <b>Sunday, April 7 @ 11:59 PM</b><br/>
-          STARTING BID: <b>$550</b>.
+          STARTING BID: <b>$550</b><br/>
+          CURRENT BID: $<b><span id="current_bid">0</span></b>
         </p>
         <p class="lead">
           Bids will go up only as increments of $50!<br/>
