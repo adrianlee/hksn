@@ -26,7 +26,7 @@
 </style>
 
 <div class="container">
-<!--   <div class="row">
+<!-- <div class="row">
     <div class="span6">
       <img src="img/logo.png" height="100px" alt="" />
       <img src="img/kaplan.jpg" height="50px" alt="" />
@@ -45,7 +45,7 @@
         <p class="lead">
           AUCTION DURATION:<br/>
           START: <b>Saturday, March 30 @ 10:00 AM</b><br/>
-          FINISH: <b>Sunday, April 7 @ 11:59 PM</b><br/>
+          FINISH: <b>Sunday, April 12 @ 11:59 PM</b><br/>
           STARTING BID: <b>$550</b><br/>
           CURRENT BID: $<b><span id="current_bid">0</span></b>
         </p>
@@ -74,7 +74,7 @@
 
 
     <h4>AUCTION START: Sunday, March 31 @ 10:00 AM</h4>
-    <h4>AUCTION FINISH: Sunday, April 7 @ 11:59 PM</h4><br/>
+    <h4>AUCTION FINISH: Sunday, April 12 @ 11:59 PM</h4><br/>
     <h1>Current bid: $<span id="current_bid">0</span></h1>
     <h5>Latest bid: <span id="latest_bid">0</span></h5>
 
@@ -191,7 +191,7 @@ $(function($) {
       return alert("Sorry {{user.display_name}}, the auction hasn't started yet");
     }
 
-    if ((new Date().getTime() < (new Date("April 7, 2013 23:59:00")).getTime())) {
+    if ((new Date().getTime() < (new Date("April 12, 2013 23:59:00")).getTime())) {
       $.getJSON('api/fetchCurrentBid', function(data) {
         if (data.current_bid) {
           current_bid = data.current_bid;
